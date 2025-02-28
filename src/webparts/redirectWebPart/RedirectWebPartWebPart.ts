@@ -11,7 +11,6 @@ import * as strings from 'RedirectWebPartWebPartStrings';
 import RedirectWebPart from './components/RedirectWebPart';
 import { IRedirectWebPartProps } from './components/IRedirectWebPartProps';
 import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls';
-import '../redirectWebPart/components/RedirectWebPart.module.scss'
 
 export interface IRedirectWebPartWebPartProps {
 	RedirectSite: string;
