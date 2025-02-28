@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Redirect SPO Page",
+    "id": "a62eca38-e29d-47f9-bd41-3d729bb93e3b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Use this webpart to redirect SPO page to internal or external page."
+      },
+      "longDescription": {
+        "default": "Use this webpart to redirect SPO page to internal or external page."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Redirect SPO Page Feature",
+        "description": "Use this webpart to redirect SPO page to internal or external page. The feature that activates elements of the spo-redirect-wp solution.",
+        "id": "e07361ab-02d4-4353-9bdc-c109a5cb876e",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spo-redirect-wp.sppkg"
+  }
+}
