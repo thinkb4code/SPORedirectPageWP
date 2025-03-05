@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { DisplayMode, Version } from '@microsoft/sp-core-library';
+import { Version } from '@microsoft/sp-core-library';
 import {
 	type IPropertyPaneConfiguration,
 	PropertyPaneTextField
@@ -19,11 +19,11 @@ export interface IRedirectWebPartWebPartProps {
 
 export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedirectWebPartWebPartProps> {
 	private QueryStrings: string[] = [];
-	private Redirect: boolean = true;
+	private Redirect: boolean = false;
 	private urlParams: URLSearchParams;
 
 	public render(): void {
-		if(!this.Redirect || this.displayMode === DisplayMode.Edit) {
+		if(!this.Redirect) {
 			const element: React.ReactElement<IRedirectWebPartProps> = React.createElement(
 				RedirectWebPart,
 				{
@@ -45,8 +45,8 @@ export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedir
 	protected onInit(): Promise<void> {
 		this.urlParams = new URLSearchParams(window.location.search);
 		this.urlParams.forEach((value: string, key: string) => {
-			if (key.toLocaleLowerCase() === 'stop') {
-				this.Redirect = false;
+			if (key.toLocaleLowerCase() === 'redirect' && value === 'true') {
+				this.Redirect = true;
 			}
 
 			this.QueryStrings.push(key); // Push each key into the array
@@ -90,11 +90,7 @@ export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedir
 									label: strings.RedirectFieldDesc,
 									description: `URL where this page will redirect. E.g. https://abc.sharepoint.com/sites/search/SitePages/Results.aspx`
 								}),
-								SelectQueryString,
-								PropertyPaneTextField('StopRedirectKey', {
-									label: `Stop Redirect Key`,
-									description: `URL Query String parameter that will be used to stop redirect. By defult, 'Stop' key will be used to prevent redirection. For example if value is set to 'noredirect' the URL format /SitePages/Results.aspx?noredirect=1 should be in use to prevent redirect.`
-								})
+								SelectQueryString
 							]
 						}
 					]
