@@ -16,6 +16,7 @@ export interface IRedirectWebPartWebPartProps {
 	RedirectSite: string;
 	QueryStringSelected: string[];
 }
+//import {HostName} from "@microsoft/teams-js-v2";
 
 export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedirectWebPartWebPartProps> {
 	private QueryStrings: string[] = [];
@@ -23,23 +24,23 @@ export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedir
 	private urlParams: URLSearchParams;
 
 	public render(): void {
-		if(!this.Redirect) {
-			const element: React.ReactElement<IRedirectWebPartProps> = React.createElement(
-				RedirectWebPart,
-				{
-				}
-			);
-	
-			ReactDom.render(element, this.domElement);
-		}else {
+		if(this.Redirect) {
 			const selectedValues: {Key: string; Value: string;}[] = [];
 			this.urlParams.forEach((value, key) => {
 				if(this.properties.QueryStringSelected.indexOf(key) >= 0) {
 					selectedValues.push({Key: key, Value: value});
 				}
 			});
-			window.open(`${this.properties.RedirectSite}?${selectedValues.map(m => `${m.Key}=${m.Value}`).join('&')}`, "_self");
+			window.open(`${this.properties.RedirectSite}?${selectedValues.map(m => `${m.Key}=${m.Value}`).join('&')}`, "_blank");
 		}
+
+		const element: React.ReactElement<IRedirectWebPartProps> = React.createElement(
+			RedirectWebPart,
+			{
+			}
+		);
+
+		ReactDom.render(element, this.domElement);
 	}
 
 	protected onInit(): Promise<void> {
