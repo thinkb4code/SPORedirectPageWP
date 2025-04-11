@@ -1,5 +1,27 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
-* {
-  display: none !important;
+.root {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  justify-content: center;
+
+  span {
+    align-self: center;
+    font-size: 16px;
+    line-height: 24px;
+    height: 75px;
+  }
+
+  .bike {
+    width: 125px;
+    height: 75px;
+    align-self: center;
+  }
+
+  .grass {
+    width: 350px;
+    height: 10px;
+    align-self: center;
+  }
 }

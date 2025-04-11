@@ -31,7 +31,10 @@ export default class RedirectWebPartWebPart extends BaseClientSideWebPart<IRedir
 					selectedValues.push({Key: key, Value: value});
 				}
 			});
-			window.open(`${this.properties.RedirectSite}?${selectedValues.map(m => `${m.Key}=${m.Value}`).join('&')}`, "_blank");
+			setTimeout(
+				() => window.open(`${this.properties.RedirectSite}?${selectedValues.map(m => `${m.Key}=${m.Value}`).join('&')}`, "_blank"),
+				1000
+			);			
 		}
 
 		const element: React.ReactElement<IRedirectWebPartProps> = React.createElement(
