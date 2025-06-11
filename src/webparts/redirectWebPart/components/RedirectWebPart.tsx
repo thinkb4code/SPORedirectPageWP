@@ -10,7 +10,7 @@ export default class RedirectWebPart extends React.Component<IRedirectWebPartPro
 		return (
 			<>
 				<div className={styles.root}>
-					<span>We're getting ready to take you to VillageWeb, just one moment</span>
+					<span>We're getting ready to take you to VillageWeb; just one moment</span>
 					<img className={styles.bike} src={bike.default} />
 					<img  className={styles.grass} src={grass.default} />
 				</div>
